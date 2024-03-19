@@ -11,6 +11,9 @@ class PastorProvider with ChangeNotifier {
   final List<Pastor> _pastors = [];
   List<Pastor> get pastors => _pastors;
 
+  final List<Pastor> _allClergy = [];
+  List<Pastor> get allClergy => _allClergy;
+
   bool _isLoading = false;
   bool get isLoading => _isLoading;
 
@@ -30,6 +33,8 @@ class PastorProvider with ChangeNotifier {
         Pastor pastor = Pastor.fromJson(
           json: data,
         );
+
+        _allClergy.add(pastor);
 
         if (!_pastors.contains(pastor)) {
           if (pastor.id == 'bishop') {
